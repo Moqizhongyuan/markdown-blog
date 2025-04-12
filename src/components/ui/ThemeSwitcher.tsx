@@ -21,6 +21,26 @@ export default function ThemeSwitcher() {
     exit: { opacity: 0, rotate: 90, scale: 0.5 },
   };
 
+  // 为每个主题定义颜色样式
+  const getThemeStyles = (itemTheme: string) => {
+    if (itemTheme === theme) {
+      // 选中状态的颜色
+      if (theme === "light") return "text-blue-600 font-medium";
+      if (theme === "dark") return "text-blue-400 font-medium";
+      if (theme === "fantasy") return "text-purple-400 font-medium";
+    }
+    // 未选中状态的颜色
+    return "";
+  };
+
+  // 为图标定义颜色样式
+  const getIconStyles = (iconTheme: string) => {
+    if (iconTheme === "light") return "text-amber-500";
+    if (iconTheme === "dark") return "text-blue-400";
+    if (iconTheme === "fantasy") return "text-purple-400";
+    return "";
+  };
+
   return (
     <Dropdown>
       <DropdownTrigger>
@@ -39,6 +59,7 @@ export default function ThemeSwitcher() {
                 animate="animate"
                 exit="exit"
                 transition={{ duration: 0.3 }}
+                className={getIconStyles("light")}
               >
                 <SunIcon />
               </motion.div>
@@ -50,6 +71,7 @@ export default function ThemeSwitcher() {
                 animate="animate"
                 exit="exit"
                 transition={{ duration: 0.3 }}
+                className={getIconStyles("dark")}
               >
                 <MoonIcon />
               </motion.div>
@@ -61,6 +83,7 @@ export default function ThemeSwitcher() {
                 animate="animate"
                 exit="exit"
                 transition={{ duration: 0.3 }}
+                className={getIconStyles("fantasy")}
               >
                 <SparklesIcon />
               </motion.div>
@@ -82,18 +105,29 @@ export default function ThemeSwitcher() {
             setTheme(selected);
           }
         }}
-        className="min-w-[120px]"
-        itemClasses={{
-          base: "py-2 data-[hover=true]:bg-default-100",
+        classNames={{
+          base: "min-w-[150px]",
         }}
       >
-        <DropdownItem key="light" startContent={<SunIcon />} className="mb-1">
+        <DropdownItem
+          key="light"
+          startContent={<SunIcon className={getIconStyles("light")} />}
+          className={getThemeStyles("light")}
+        >
           浅色
         </DropdownItem>
-        <DropdownItem key="dark" startContent={<MoonIcon />} className="mb-1">
+        <DropdownItem
+          key="dark"
+          startContent={<MoonIcon className={getIconStyles("dark")} />}
+          className={getThemeStyles("dark")}
+        >
           深色
         </DropdownItem>
-        <DropdownItem key="fantasy" startContent={<SparklesIcon />}>
+        <DropdownItem
+          key="fantasy"
+          startContent={<SparklesIcon className={getIconStyles("fantasy")} />}
+          className={getThemeStyles("fantasy")}
+        >
           奇幻
         </DropdownItem>
       </DropdownMenu>
