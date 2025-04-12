@@ -14,45 +14,45 @@ tags: [鬼刀, 插画, 艺术, 图库]
 
 ### 经典作品
 
-![鬼刀作品1](/images/gallery/17_Akali_8k.jpg)
+![鬼刀作品1](/images/gallery/gallery-image-005.jpg)
 
-*《Akali》- 鬼刀8K高清作品*
+_《Akali》- 鬼刀 8K 高清作品_
 
-![鬼刀作品2](/images/gallery/15_Shine1_8k.jpg)
+![鬼刀作品2](/images/gallery/gallery-image-003.jpg)
 
-*《Shine》- 光影效果展示*
+_《Shine》- 光影效果展示_
 
-![鬼刀作品3](/images/gallery/8_Snowy2_8k.jpg)
+![鬼刀作品3](/images/gallery/gallery-image-023.jpg)
 
-*《Snowy》- 冬季主题作品*
+_《Snowy》- 冬季主题作品_
 
 ### 风景与场景
 
-![鬼刀场景1](/images/gallery/61_shadow4_8k.jpg)
+![鬼刀场景1](/images/gallery/gallery-image-017.jpg)
 
-*《Shadow》- 光影技法展示*
+_《Shadow》- 光影技法展示_
 
-![鬼刀场景2](/images/gallery/47_showroom2_8k.jpg)
+![鬼刀场景2](/images/gallery/gallery-image-014.jpg)
 
-*《Showroom》- 室内设计与人物结合*
+_《Showroom》- 室内设计与人物结合_
 
-![鬼刀场景3](/images/gallery/1_DressingRoom2_4k.jpg)
+![鬼刀场景3](/images/gallery/gallery-image-007.jpg)
 
-*《DressingRoom》- 精致的室内细节*
+_《DressingRoom》- 精致的室内细节_
 
 ### 人物特写
 
-![鬼刀人物1](/images/gallery/8_Makeup2_8k_a2d2c.jpg)
+![鬼刀人物1](/images/gallery/gallery-image-022.jpg)
 
-*《Makeup》- 精致妆容设计*
+_《Makeup》- 精致妆容设计_
 
-![鬼刀人物2](/images/gallery/8BFBC299D9991761F49D7E73582ADAB9.jpg)
+![鬼刀人物2](/images/gallery/gallery-image-020.jpg)
 
-*人物特写 - 细腻的面部表情*
+_人物特写 - 细腻的面部表情_
 
-![鬼刀人物3](/images/gallery/CCD8F51C80C270293E5E4FF1FC47E1A5.jpg)
+![鬼刀人物3](/images/gallery/gallery-image-028.jpg)
 
-*角色设计 - 独特的服装与配饰*
+_角色设计 - 独特的服装与配饰_
 
 ## 艺术特点
 
@@ -73,4 +73,4 @@ tags: [鬼刀, 插画, 艺术, 图库]
 
 WLOP（鬼刀）是一位中国数字艺术家，以其精美的数字插画和独特的艺术风格在全球范围内享有盛誉。作品常见于各大艺术平台和社交媒体。
 
-*注：本图库中的图片仅用于欣赏和学习，版权归原作者所有。*
+_注：本图库中的图片仅用于欣赏和学习，版权归原作者所有。_
