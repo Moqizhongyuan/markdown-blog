@@ -1,8 +1,8 @@
-import React from 'react';
-import fs from 'fs';
-import path from 'path';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import fs from "fs";
+import path from "path";
+import Link from "next/link";
+import Image from "next/image";
 
 type ImageData = {
   name: string;
@@ -11,50 +11,71 @@ type ImageData = {
 };
 
 function getImages(): ImageData[] {
-  const galleryDir = path.join(process.cwd(), 'public/images/gallery');
-  
+  const galleryDir = path.join(process.cwd(), "public/images/gallery");
+
   // 确保目录存在
   if (!fs.existsSync(galleryDir)) {
     return [];
   }
-  
+
   // 读取目录中的图片文件
   const fileNames = fs.readdirSync(galleryDir);
-  
+
   // 过滤出图片文件并创建图片数据对象
   const imageFiles = fileNames
-    .filter(fileName => {
+    .filter((fileName) => {
       const ext = path.extname(fileName).toLowerCase();
-      return ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext);
+      return [".jpg", ".jpeg", ".png", ".gif", ".webp"].includes(ext);
     })
-    .map(fileName => {
-      // 为图片创建一个更友好的显示名称
-      const displayName = fileName
-        .replace(/\.[^/.]+$/, '') // 移除扩展名
-        .replace(/[_-]/g, ' ') // 将下划线和连字符替换为空格
-        .replace(/\b\w/g, l => l.toUpperCase()); // 将每个单词的首字母大写
-        
+    .map((fileName) => {
+      // 为使用统一格式命名的图片创建更友好的显示名称
+      let displayName = "";
+
+      if (fileName.startsWith("gallery-image-")) {
+        // 从新命名的文件提取编号
+        const numberMatch = fileName.match(/gallery-image-(\d+)/);
+        if (numberMatch && numberMatch[1]) {
+          displayName = `鬼刀插画 #${parseInt(numberMatch[1])}`;
+        } else {
+          displayName = fileName
+            .replace(/\.[^/.]+$/, "") // 移除扩展名
+            .replace(/[_-]/g, " ") // 将下划线和连字符替换为空格
+            .replace(/\b\w/g, (l) => l.toUpperCase()); // 将每个单词的首字母大写
+        }
+      } else {
+        // 处理其他格式的文件名
+        displayName = fileName
+          .replace(/\.[^/.]+$/, "") // 移除扩展名
+          .replace(/[_-]/g, " ") // 将下划线和连字符替换为空格
+          .replace(/\b\w/g, (l) => l.toUpperCase()); // 将每个单词的首字母大写
+      }
+
       return {
         name: fileName,
         path: `/images/gallery/${fileName}`,
-        displayName
+        displayName,
       };
     });
-  
+
+  // 按文件名排序，使gallery-image-001在前面
+  imageFiles.sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { numeric: true })
+  );
+
   return imageFiles;
 }
 
 export default function GalleryPage() {
   const images = getImages();
-  
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">鬼刀插画图库</h1>
-      
+
       <p className="mb-8">
         这里展示了一系列精美的鬼刀风格插画作品。您可以点击图片查看大图。
       </p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {images.map((image) => (
           <div
@@ -73,16 +94,18 @@ export default function GalleryPage() {
                 />
               </div>
               <div className="p-4 bg-white dark:bg-gray-800">
-                <h3 className="text-lg font-semibold truncate">{image.displayName}</h3>
+                <h3 className="text-lg font-semibold truncate">
+                  {image.displayName}
+                </h3>
               </div>
             </Link>
           </div>
         ))}
       </div>
-      
+
       <div className="mt-8 text-center">
-        <Link 
-          href="/posts/gallery" 
+        <Link
+          href="/posts/gallery"
           className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           查看详细介绍
