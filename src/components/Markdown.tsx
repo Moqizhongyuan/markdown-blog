@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import MarkdownIt from "markdown-it";
 import { Card, CardBody } from "@nextui-org/react";
