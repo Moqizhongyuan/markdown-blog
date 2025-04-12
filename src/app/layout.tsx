@@ -26,6 +26,7 @@ export default function RootLayout({
               <ul className="flex space-x-4">
                 <li><a href="/" className="hover:underline">首页</a></li>
                 <li><a href="/posts" className="hover:underline">文章</a></li>
+                <li><a href="/gallery" className="hover:underline">图库</a></li>
                 <li><a href="/about" className="hover:underline">关于</a></li>
               </ul>
             </nav>
