@@ -82,11 +82,15 @@ export default function ThemeSwitcher() {
             setTheme(selected);
           }
         }}
+        className="min-w-[120px]"
+        itemClasses={{
+          base: "py-2 data-[hover=true]:bg-default-100",
+        }}
       >
-        <DropdownItem key="light" startContent={<SunIcon />}>
+        <DropdownItem key="light" startContent={<SunIcon />} className="mb-1">
           浅色
         </DropdownItem>
-        <DropdownItem key="dark" startContent={<MoonIcon />}>
+        <DropdownItem key="dark" startContent={<MoonIcon />} className="mb-1">
           深色
         </DropdownItem>
         <DropdownItem key="fantasy" startContent={<SparklesIcon />}>
