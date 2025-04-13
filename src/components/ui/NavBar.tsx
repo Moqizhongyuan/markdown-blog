@@ -8,7 +8,6 @@ import { MenuOutlined } from "@ant-design/icons";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { motion } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
-import "./NavBar.css";
 
 const { Header } = Layout;
 
@@ -51,7 +50,10 @@ export default function NavBar() {
   const menuItems = navItems.map((item) => ({
     key: item.href,
     label: (
-      <Link href={item.href} className="nav-link">
+      <Link
+        href={item.href}
+        className="relative transition-all duration-300 ease-in-out hover:opacity-90"
+      >
         {item.label}
       </Link>
     ),
@@ -62,7 +64,7 @@ export default function NavBar() {
       initial="hidden"
       animate="visible"
       variants={navbarVariants}
-      className="navbar-container"
+      className="transition-all duration-300 ease-in-out"
     >
       <Header className="flex justify-between items-center mb-8 border-b rounded-xl px-4 sm:px-6 py-2 bg-white dark:bg-gray-800 h-auto">
         <div className="flex items-center">
