@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 导入Ant Design样式 */
+@import 'antd/dist/reset.css';
+
 /* 主题文本颜色基本设置 */
 :root {
   --text-primary: #111827;
@@ -62,23 +65,23 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0);
   z-index: -1;
 }
 
 /* 主题适配的背景覆盖 */
 .light body::before {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0);
   backdrop-filter: saturate(70%) brightness(105%);
 }
 
 .dark body::before {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0);
   backdrop-filter: saturate(60%) brightness(60%);
 }
 
 .fantasy body::before {
-  background-color: rgba(15, 23, 42, 0.85);
+  background-color: rgba(15, 23, 42, 0);
   backdrop-filter: saturate(70%) brightness(70%) hue-rotate(340deg);
 }
 
@@ -149,6 +152,66 @@ blockquote {
 
 .text-tertiary {
   color: var(--text-tertiary);
+}
+
+/* Ant Design 主题适配样式 */
+.light .ant-btn-text:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.dark .ant-btn-text:hover,
+.fantasy .ant-btn-text:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .ant-menu,
+.fantasy .ant-menu {
+  background: transparent;
+}
+
+.dark .ant-card,
+.fantasy .ant-card {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.dark .ant-drawer-content,
+.fantasy .ant-drawer-content {
+  background: #1f2937;
+  color: var(--text-primary);
+}
+
+.dark .ant-drawer-header,
+.fantasy .ant-drawer-header {
+  background: #1f2937;
+  border-bottom: 1px solid #374151;
+}
+
+.dark .ant-drawer-title,
+.fantasy .ant-drawer-title {
+  color: var(--text-primary);
+}
+
+.dark .ant-drawer-close,
+.fantasy .ant-drawer-close {
+  color: var(--text-secondary);
+}
+
+.dark .ant-divider,
+.fantasy .ant-divider {
+  border-color: #374151;
+}
+
+.search-box {
+  transition: all 0.3s ease;
+}
+
+.search-box:focus-within {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.fantasy .search-box:focus-within {
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
 }
 
 /* Fantasy主题下的Markdown样式 */

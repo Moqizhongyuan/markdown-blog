@@ -2,8 +2,9 @@
 
 import React from "react";
 import MarkdownIt from "markdown-it";
-import { Card, CardBody } from "@nextui-org/react";
+import { Card } from "antd";
 import { useTheme } from "@/context/ThemeContext";
+import classNames from "classnames";
 
 interface MarkdownProps {
   content: string;
@@ -20,18 +21,22 @@ export default function Markdown({ content }: MarkdownProps) {
 
   const renderedContent = md.render(content);
 
+  const contentClasses = classNames("prose", "max-w-none", {
+    "prose-slate": theme === "light",
+    "prose-invert": theme === "dark" || theme === "fantasy",
+    "fantasy-prose": theme === "fantasy",
+  });
+
   return (
-    <Card className="border-none bg-transparent shadow-none">
-      <CardBody>
-        <div
-          className={`prose max-w-none
-            ${theme === "light" ? "prose-slate" : ""} 
-            ${theme === "dark" ? "prose-invert" : ""}
-            ${theme === "fantasy" ? "prose-invert fantasy-prose" : ""}
-          `}
-          dangerouslySetInnerHTML={{ __html: renderedContent }}
-        />
-      </CardBody>
+    <Card
+      bordered={false}
+      className="border-none bg-transparent shadow-none"
+      bodyStyle={{ padding: "24px" }}
+    >
+      <div
+        className={contentClasses}
+        dangerouslySetInnerHTML={{ __html: renderedContent }}
+      />
     </Card>
   );
 }

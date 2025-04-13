@@ -18,7 +18,7 @@ export default function Posts({
         const searchText = (
           post.title +
           " " +
-          post.content +
+          post.date +
           " " +
           (post.tags?.join(" ") || "")
         ).toLowerCase();

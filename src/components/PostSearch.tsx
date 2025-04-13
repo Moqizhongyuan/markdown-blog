@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import SearchBox from "@/components/ui/SearchBox";
-import AnimatedCard from "@/components/ui/AnimatedCard";
+import { motion } from "framer-motion";
 
 interface PostSearchProps {
   initialQuery: string;
@@ -34,13 +34,18 @@ export default function PostSearch({
   };
 
   return (
-    <AnimatedCard delay={0.1} className={className}>
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      className={className}
+    >
       <SearchBox
         className="w-full"
         placeholder="搜索文章..."
         initialValue={searchValue}
         onSearch={handleSearch}
       />
-    </AnimatedCard>
+    </motion.div>
   );
 }
