@@ -4,7 +4,12 @@ import matter from "gray-matter";
 import { format } from "date-fns";
 import { zhCN } from "date-fns/locale";
 
-const postsDirectory = path.join(process.cwd(), "content/posts");
+const codeEngineeringDirectory = path.join(
+  process.cwd(),
+  "content/codeEngineering"
+);
+const codeLifeDirectory = path.join(process.cwd(), "content/codeLife");
+const frontEndDirectory = path.join(process.cwd(), "content/frontEnd");
 
 export type Post = {
   slug: string;
@@ -15,7 +20,28 @@ export type Post = {
   tags?: string[];
 };
 
-export function getPosts(): Post[] {
+export enum PostCategory {
+  codeEngineering = "codeEngineering",
+  codeLife = "codeLife",
+  frontEnd = "frontEnd",
+}
+
+export function getPosts(category: PostCategory): Post[] {
+  let postsDirectory = "";
+  switch (category) {
+    case PostCategory.codeEngineering:
+      postsDirectory = codeEngineeringDirectory;
+      break;
+    case PostCategory.codeLife:
+      postsDirectory = codeLifeDirectory;
+      break;
+    case PostCategory.frontEnd:
+      postsDirectory = frontEndDirectory;
+      break;
+    default:
+      postsDirectory = codeEngineeringDirectory;
+      break;
+  }
   // 确保目录存在
   if (!fs.existsSync(postsDirectory)) {
     return [];
@@ -55,7 +81,25 @@ export function getPosts(): Post[] {
   return posts;
 }
 
-export function getPostBySlug(slug: string): Post | null {
+export function getPostBySlug(
+  slug: string,
+  category: PostCategory
+): Post | null {
+  let postsDirectory = "";
+  switch (category) {
+    case PostCategory.codeEngineering:
+      postsDirectory = codeEngineeringDirectory;
+      break;
+    case PostCategory.codeLife:
+      postsDirectory = codeLifeDirectory;
+      break;
+    case PostCategory.frontEnd:
+      postsDirectory = frontEndDirectory;
+      break;
+    default:
+      postsDirectory = codeEngineeringDirectory;
+      break;
+  }
   try {
     // 对slug进行URL解码，处理中文文件名
     const decodedSlug = decodeURIComponent(slug);

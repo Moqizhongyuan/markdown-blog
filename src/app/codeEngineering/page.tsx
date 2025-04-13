@@ -1,4 +1,4 @@
-import { getPosts } from "@/lib/api";
+import { getPosts, PostCategory } from "@/lib/api";
 import Link from "next/link";
 import { Suspense } from "react";
 import PostSearch from "@/components/PostSearch";
@@ -10,7 +10,7 @@ export default function Posts({
   searchParams: { search?: string };
 }) {
   const searchQuery = searchParams.search || "";
-  const allPosts = getPosts();
+  const allPosts = getPosts(PostCategory.codeEngineering);
 
   // 在服务器端过滤文章
   const posts = searchQuery
@@ -62,7 +62,10 @@ export default function Posts({
               className="border rounded-lg p-4 hover:shadow-md transition-shadow"
             >
               <h2 className="text-xl font-bold mb-2">
-                <Link href={`/posts/${post.slug}`} className="hover:underline">
+                <Link
+                  href={`/${PostCategory.codeEngineering}/${post.slug}`}
+                  className="hover:underline"
+                >
                   {post.title}
                 </Link>
               </h2>

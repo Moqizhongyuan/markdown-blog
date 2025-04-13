@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Input } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
 import { useTheme } from "@/context/ThemeContext";
 import { useRouter } from "next/navigation";
 
@@ -32,7 +31,7 @@ export default function SearchBox({
     if (onSearch) {
       onSearch(value);
     } else if (value.trim()) {
-      router.push(`/posts?search=${encodeURIComponent(value.trim())}`);
+      router.push(`/frontEnd?search=${encodeURIComponent(value.trim())}`);
     }
   };
 

@@ -1,10 +1,10 @@
-import { getPosts } from "@/lib/api";
+import { getPosts, PostCategory } from "@/lib/api";
 import Link from "next/link";
 import AnimatedCard from "@/components/ui/AnimatedCard";
 import SearchBox from "@/components/ui/SearchBox";
 
 export default function Home() {
-  const posts = getPosts();
+  const posts = getPosts(PostCategory.frontEnd);
 
   return (
     <div>
@@ -36,7 +36,7 @@ export default function Home() {
               >
                 <h3 className="text-xl font-bold mb-2">
                   <Link
-                    href={`/posts/${post.slug}`}
+                    href={`/${PostCategory.frontEnd}/${post.slug}`}
                     className="hover:underline"
                   >
                     {post.title}

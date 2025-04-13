@@ -21,8 +21,9 @@ export default function NavBar() {
 
   const navItems = [
     { href: "/", label: "首页" },
-    { href: "/posts", label: "文章" },
-    { href: "/gallery", label: "图库" },
+    { href: "/frontEnd", label: "前端" },
+    { href: "/codeEngineering", label: "工程化" },
+    { href: "/codeLife", label: "代码人生" },
     { href: "/about", label: "关于" },
   ];
 
