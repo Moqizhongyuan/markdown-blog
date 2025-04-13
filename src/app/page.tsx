@@ -10,9 +10,9 @@ export default function Home() {
     <div>
       <AnimatedCard>
         <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">欢迎来到Markdown博客</h2>
+          <h2 className="text-2xl font-bold mb-4">欢迎访问我的博客</h2>
           <p className="text-lg">
-            这是一个基于NextJS和Tailwind构建的Markdown博客网站。在这里你可以发布和分享你的文章、笔记和思考。
+            很高兴你能来到我的个人空间！这里是我分享思考、记录生活和技术探索的地方。希望你能在这里找到有趣或有用的内容，欢迎常来逛逛~
           </p>
         </section>
       </AnimatedCard>
