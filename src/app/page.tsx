@@ -1,6 +1,7 @@
 import { getPosts } from "@/lib/api";
 import Link from "next/link";
 import AnimatedCard from "@/components/ui/AnimatedCard";
+import SearchBox from "@/components/ui/SearchBox";
 
 export default function Home() {
   const posts = getPosts();
@@ -14,6 +15,10 @@ export default function Home() {
             这是一个基于NextJS和Tailwind构建的Markdown博客网站。在这里你可以发布和分享你的文章、笔记和思考。
           </p>
         </section>
+      </AnimatedCard>
+
+      <AnimatedCard delay={0.15} className="mb-6">
+        <SearchBox className="w-full" placeholder="搜索你感兴趣的文章..." />
       </AnimatedCard>
 
       <section>
