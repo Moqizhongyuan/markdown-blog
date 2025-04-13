@@ -69,7 +69,7 @@ export default function SearchBox({
         variant={styles.variant}
         color={styles.color}
         radius="lg"
-        size="md"
+        size="lg"
         startContent={
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ export default function SearchBox({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-5 h-5 text-gray-400"
+            className="w-5 h-5 text-gray-400 flex-shrink-0 ml-1"
           >
             <path
               strokeLinecap="round"
@@ -89,8 +89,8 @@ export default function SearchBox({
         classNames={{
           base: "max-w-full",
           mainWrapper: "h-full",
-          input: "text-sm",
-          inputWrapper: `shadow-sm ${
+          input: "text-sm py-2 min-h-[2.5rem]",
+          inputWrapper: `shadow-sm h-12 min-h-[3rem] py-1 flex items-center ${
             theme === "fantasy" ? "bg-opacity-20" : ""
           }`,
         }}
