@@ -2,18 +2,33 @@ import { getPosts, PostCategory } from "@/lib/api";
 import Link from "next/link";
 import AnimatedCard from "@/components/ui/AnimatedCard";
 import SearchBox from "@/components/ui/SearchBox";
+import { getRandomQuote } from "@/data/quotes";
+import dynamic from "next/dynamic";
+
+// 使用动态导入，因为QuoteRotator是客户端组件
+const QuoteRotator = dynamic(() => import("@/components/ui/QuoteRotator"), {
+  ssr: false,
+  loading: () => (
+    <blockquote className="border-l-4 border-gray-300 pl-4 py-2 italic text-gray-600 dark:text-gray-400 min-h-[120px] flex items-center">
+      <p>加载中...</p>
+    </blockquote>
+  ),
+});
 
 export default function Home() {
   const posts = getPosts(PostCategory.frontEnd);
+  // 获取一个初始名言，用于SSR和QuoteRotator的初始值
+  const initialQuote = getRandomQuote();
 
   return (
     <div>
       <AnimatedCard>
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-4">欢迎访问我的博客</h2>
-          <p className="text-lg">
-            很高兴你能来到我的个人空间！这里是我分享思考、记录生活和技术探索的地方。希望你能在这里找到有趣或有用的内容，欢迎常来逛逛~
-          </p>
+          <div className="space-y-4">
+            {/* 使用动态加载的名言轮换组件 */}
+            <QuoteRotator initialQuote={initialQuote} interval={10000} />
+          </div>
         </section>
       </AnimatedCard>
 
