@@ -28,22 +28,23 @@ export default function QuoteRotator({
       setQuotes((prevQuotes) => {
         // 保持队列不超过5个名言
         const newQuotes = [...prevQuotes, newQuote].slice(-5);
+        // 新名言总是在最后一个位置
+        setCurrentIndex(newQuotes.length - 1);
         return newQuotes;
       });
-      setCurrentIndex((prevIndex) => prevIndex + 1);
     }, interval);
 
     return () => clearInterval(timer);
   }, [interval, quotes]);
 
-  // 当前要显示的名言
-  const currentQuote = quotes[currentIndex % quotes.length];
+  // 当前要显示的名言 - 直接使用currentIndex，不需要取余操作
+  const currentQuote = quotes[currentIndex];
 
   return (
     <div className="min-h-[120px] flex items-center">
       <AnimatePresence mode="wait">
         <motion.blockquote
-          key={currentIndex}
+          key={currentQuote.content} // 使用内容作为key，确保相同内容不会触发动画
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
