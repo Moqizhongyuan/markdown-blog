@@ -2,30 +2,33 @@
 
 import React from "react";
 import MarkdownIt from "markdown-it";
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css"; 
 import { Card } from "antd";
-import { useTheme } from "@/context/ThemeContext";
-import classNames from "classnames";
 
 interface MarkdownProps {
   content: string;
 }
 
 export default function Markdown({ content }: MarkdownProps) {
-  const { theme } = useTheme();
 
   const md = new MarkdownIt({
     html: true,
     linkify: true,
     typographer: true,
+    highlight: (str: string, lang: string): string => {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return `<pre class="hljs"><code>${hljs
+            .highlight(str, { language: lang, ignoreIllegals: true })
+            .value}</code></pre>`;
+        } catch (__) {}
+      }
+      return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;
+    },
   });
 
   const renderedContent = md.render(content);
-
-  const contentClasses = classNames("prose", "max-w-none", {
-    "prose-slate": theme === "light",
-    "prose-invert": theme === "dark" || theme === "fantasy",
-    "fantasy-prose": theme === "fantasy",
-  });
 
   return (
     <Card
@@ -34,7 +37,6 @@ export default function Markdown({ content }: MarkdownProps) {
       bodyStyle={{ padding: "24px" }}
     >
       <div
-        className={contentClasses}
         dangerouslySetInnerHTML={{ __html: renderedContent }}
       />
     </Card>
