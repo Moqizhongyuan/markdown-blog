@@ -10,7 +10,7 @@ export default function About() {
       <div className="flex flex-col md:flex-row items-start gap-8 mb-8">
         <div className="w-full md:w-1/3">
           <img
-            src="https://avatars.githubusercontent.com/u/130364829?v=4"
+            src="/images/avatar.jpg"
             alt="个人头像"
             className="rounded-lg shadow-lg w-full border-2 border-slate-200 dark:border-slate-700"
           />
